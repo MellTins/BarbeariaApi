@@ -7,10 +7,10 @@ namespace BarbeariaApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClienteModelControllers1 : ControllerBase
+    public class ClienteModelControllers : ControllerBase
     {
         private readonly AppDbContext _context;
-        public ClienteModelControllers1(AppDbContext context)
+        public ClienteModelControllers(AppDbContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace BarbeariaApi.Controllers
             return Ok(clientes);
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public ActionResult<ClienteModel>BuscarClientesPorId(int id)
         {
             var cliente = _context.Clientes.Find(id);
@@ -34,6 +34,6 @@ namespace BarbeariaApi.Controllers
 
             return Ok(cliente);
         }
-    }
+    } //https://www.youtube.com/watch?v=iqLVQoK4BKE   39:09
 
 }
