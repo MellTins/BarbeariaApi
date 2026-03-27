@@ -7,8 +7,8 @@ Este projeto marca minha transição definitiva de aplicações **Console** para
 
 ## 📸 Demonstração da Interface (Scalar)
 > [!TIP]
-> Insira aqui o print que você tirou do seu Scalar funcionando!
-> Exemplo: `![Interface Scalar](./assets/scalar-screenshot.png)`
+> ToDo : Tirar prints do scalar funcionando
+>
 
 ## 🚀 Evolução Técnica: Do Terminal para o Back-end Real
 Sair da lógica linear de console exigiu o domínio de uma stack moderna. Neste projeto, implementei:
@@ -48,4 +48,4 @@ Sair da lógica linear de console exigiu o domínio de uma stack moderna. Neste 
 ---
 **Desafio Superado:** "O maior aprendizado foi entender como o código C# se comunica com o motor do banco de dados e como garantir que os dados retornem limpos (sem nulos) para o front-end usando as ferramentas corretas do .NET."
 
-**Desenvolvido por [Seu Nome]** - Foco em Backend C#
+**Desenvolvido por [Meliss Martins]** - Foco em Backend C#
