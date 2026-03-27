@@ -1,41 +1,51 @@
 # 🪒 Barbearia API - Sistema de Agendamento Profissional
 
-Este projeto marca minha evolução no ecossistema .NET, saindo de aplicações em modo Console para o desenvolvimento de uma **Web API robusta** voltada a resolver problemas reais de gestão de pequenos negócios.
+![Status do Projeto](https://img.shields.io)
+![.NET Version](https://img.shields.io)
 
-## 🚀 Evolução Técnica: Do Terminal para o Mundo Real
-Nesta fase inicial, o foco foi a transição da lógica linear de terminal para uma arquitetura orientada a serviços e persistência de dados.
+Este projeto marca minha transição definitiva de aplicações **Console** para o desenvolvimento de **Web APIs industriais**. Desenvolvi um sistema de back-end completo para gestão de barbearias, focado em persistência de dados e regras de negócio complexas.
 
-### Principais Aprendizados:
-*   **Arquitetura Web API:** Substituí o `Console.ReadLine()` e `Console.WriteLine()` por controladores (`Controllers`) e endpoints HTTP (`GET`, `POST`).
-*   **Mapeamento Objeto-Relacional (ORM):** Implementei o **Entity Framework Core**, permitindo que classes C# gerenciem tabelas SQL de forma automatizada (**Code-First**).
-*   **Persistência de Dados:** Migrei de listas temporárias em memória para um banco de dados real, utilizando **Migrations** para versionar a estrutura das tabelas.
-*   **Injeção de Dependência:** Configurei o ciclo de vida do `AppDbContext` no `Program.cs`, seguindo padrões de mercado para aplicações escaláveis.
+## 📸 Demonstração da Interface (Scalar)
+> [!TIP]
+> Insira aqui o print que você tirou do seu Scalar funcionando!
+> Exemplo: `![Interface Scalar](./assets/scalar-screenshot.png)`
 
-## 🏗️ Modelagem do Domínio (Database)
-Estruturei as entidades fundamentais do negócio na pasta `/Models`:
+## 🚀 Evolução Técnica: Do Terminal para o Back-end Real
+Sair da lógica linear de console exigiu o domínio de uma stack moderna. Neste projeto, implementei:
 
-1.  **Cliente (`Client`)**: Gestão de usuários (Nome, Telefone, Email).
-2.  **Serviço (`Service`)**: Catálogo com Preço e Duração (Corte, Barba, Sobrancelha).
-3.  **Agendamento (`Appointment`)**: O "coração" do sistema, relacionando Clientes e Serviços com data e hora.
+### ⚙️ Arquitetura e Persistência
+*   **Entity Framework Core (Code-First):** Toda a estrutura do banco de dados foi gerada a partir de classes C#.
+*   **Gerenciamento de Migrations:** Utilizei o histórico de migrations para versionar o banco de dados, incluindo ajustes de precisão decimal financeira.
+*   **Relacionamentos SQL:** Implementei chaves estrangeiras e *Navigation Properties* para conectar Clientes, Serviços e Agendamentos.
 
-## 📡 Endpoints Implementados (Módulo Cliente)
-Desenvolvi o `ClientesController` com as seguintes funcionalidades profissionais:
+### 🧠 Regras de Negócio Implementadas
+*   **Validação de Concorrência (Agendamentos):** Utilizei o método `.Any()` do LINQ para impedir que dois clientes ocupem o mesmo horário no banco de dados.
+*   **Eager Loading (JOINs):** Uso do método `.Include()` para retornar objetos completos (ex: ver o nome do cliente dentro do agendamento) em vez de apenas IDs.
+*   **Tratamento de Ciclos JSON:** Configuração de serialização no `Program.cs` para evitar loops infinitos em relacionamentos bidimensionais.
 
-*   `GET /api/clientes`: Recupera a lista completa de clientes cadastrados.
-*   `GET /api/clientes/{id}`: Busca detalhada por ID com tratamento de erro `404 Not Found`.
-*   **Documentação Interativa**: Implementação do **Scalar** (`/scalar/v1`) para testes de API em interface visual moderna.
+## 📡 Endpoints Principais
 
-## 🛠️ Tecnologias e Ferramentas
-*   **Linguagem:** C# / .NET 10.0
+### Clientes (`/api/clientes`)
+*   `GET`: Lista todos os clientes.
+*   `POST`: Cadastro com validação de dados.
+*   `PUT/DELETE`: Gestão completa do ciclo de vida do registro.
+
+### Serviços (`/api/servicos`)
+*   Catálogo com **precisão decimal (18,2)** para valores monetários.
+*   Definição de duração de cada procedimento.
+
+### Agendamentos (`/api/agendamentos`)
+*   **O coração do sistema:** Une Cliente e Serviço a uma Data/Hora.
+*   Retorno enriquecido com dados das tabelas relacionadas.
+
+## 🛠️ Tecnologias
+*   **Linguagem:** C# (.NET 10)
 *   **Framework:** ASP.NET Core Web API
-*   **Banco de Dados:** SQL Server / SQLite
 *   **ORM:** Entity Framework Core
 *   **Documentação:** Scalar (OpenAPI 3.0)
-
-## 🔜 Próximos Passos
-- [ ] Implementar CRUD completo de **Serviços**.
-- [ ] Desenvolver a lógica de **Agendamentos** com validação de disponibilidade.
-- [ ] Adicionar Regra de Negócio: Impedir agendamentos duplicados no mesmo horário.
+*   **Banco de Dados:** SQL Server / SQLite
 
 ---
-*Projeto desenvolvido para portfólio técnico *
+**Desafio Superado:** "O maior aprendizado foi entender como o código C# se comunica com o motor do banco de dados e como garantir que os dados retornem limpos (sem nulos) para o front-end usando as ferramentas corretas do .NET."
+
+**Desenvolvido por [Seu Nome]** - Foco em Backend C#
