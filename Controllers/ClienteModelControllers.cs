@@ -2,6 +2,7 @@
 using BarbeariaApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace BarbeariaApi.Controllers
 {
@@ -34,6 +35,60 @@ namespace BarbeariaApi.Controllers
 
             return Ok(cliente);
         }
-    } //https://www.youtube.com/watch?v=iqLVQoK4BKE   39:09
+
+        [HttpPost]
+        public ActionResult<ClienteModel> CriarClientes(ClienteModel novoCliente)
+        {
+            if (novoCliente == null)
+            {
+
+                return BadRequest("Ocorreu um erro na solicitação!");
+            }
+
+            _context.Clientes.Add(novoCliente);
+            _context.SaveChanges();
+
+            return CreatedAtAction(nameof(BuscarClientesPorId), new { id = novoCliente.Id }, novoCliente);
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+        public ActionResult<ClienteModel> EditarClientes(ClienteModel novoCliente , int id)
+        {
+            var clienteEditar = _context.Clientes.Find(id);
+
+            if (clienteEditar == null)
+            {
+                return NotFound("Registro não localizado");
+            }
+
+            clienteEditar.Nome = novoCliente.Nome;
+            clienteEditar.Telefone = novoCliente.Telefone;
+            clienteEditar.Email = novoCliente.Email;
+
+            _context.Clientes.Update(clienteEditar);
+            _context.SaveChanges();
+
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult<ClienteModel> ExcluirCliente(int id)
+        {
+            var cliente = _context.Clientes.Find(id);
+
+            if (cliente == null)
+            {
+                return NotFound("Registro não localizado");
+            }
+
+            _context.Clientes.Remove(cliente);
+            _context.SaveChanges();
+
+            return NoContent();
+        }
+
+    } 
 
 }
