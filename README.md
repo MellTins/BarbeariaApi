@@ -38,4 +38,4 @@ Desenvolvi o `ClientesController` com as seguintes funcionalidades profissionais
 - [ ] Adicionar Regra de Negócio: Impedir agendamentos duplicados no mesmo horário.
 
 ---
-*Projeto desenvolvido para portfólio técnico - Foco em transição para o nível Pleno.*
+*Projeto desenvolvido para portfólio técnico *
