@@ -25,7 +25,7 @@ namespace BarbeariaApi.Controllers
                 // O ".Include" faz o "JOIN" no banco de dados
                 var agendamentos = _context.Agendamentos
                     .Include(a => a.Cliente) // Traz os dados do Cliente junto
-                    .Include(a => a.Servico) // Traz os dados do Serviço junto
+                    .Include(a => a.Service) // Traz os dados do Serviço junto
                     .ToList();
 
                 return Ok(agendamentos);

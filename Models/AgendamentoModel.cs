@@ -7,7 +7,7 @@
         public ClienteModel? Cliente { get; set; }
         public int ClienteId { get; set; }
 
-        public ServiceModel? Servico { get; set; }
+        public ServiceModel? Service { get; set; }
         public int ServiceId { get; set; }
     }
 }
