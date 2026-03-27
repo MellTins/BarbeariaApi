@@ -4,6 +4,7 @@ using BarbeariaApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BarbeariaApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260327142409_AjustePreco")]
+    partial class AjustePreco
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,14 +42,7 @@ namespace BarbeariaApi.Migrations
                     b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ServicoId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
-
-                    b.HasIndex("ServicoId");
 
                     b.ToTable("Agendamentos");
                 });
@@ -98,23 +94,6 @@ namespace BarbeariaApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Servicos");
-                });
-
-            modelBuilder.Entity("BarbeariaApi.Models.AgendamentoModel", b =>
-                {
-                    b.HasOne("BarbeariaApi.Models.ClienteModel", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BarbeariaApi.Models.ServiceModel", "Servico")
-                        .WithMany()
-                        .HasForeignKey("ServicoId");
-
-                    b.Navigation("Cliente");
-
-                    b.Navigation("Servico");
                 });
 #pragma warning restore 612, 618
         }

@@ -86,7 +86,7 @@ namespace BarbeariaApi.Controllers
             _context.Clientes.Remove(cliente);
             _context.SaveChanges();
 
-            return NoContent();
+            return Ok("Cliente removido com sucesso.");
         }
 
     } 
