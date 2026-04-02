@@ -7,7 +7,8 @@ Este projeto marca minha transição definitiva de aplicações **Console** para
 
 ## 📸 Demonstração da Interface (Scalar)
 > [!TIP]
-> ToDo : Tirar prints do scalar funcionando
+> (<img width="891" height="672" alt="Captura de tela 2026-04-02 103739" src="https://github.com/user-attachments/assets/007f88dc-df0b-4691-b6b8-174ab06662ba" />
+)
 >
 
 ## 🚀 Evolução Técnica: Do Terminal para o Back-end Real
